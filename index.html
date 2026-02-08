@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rahulllll 💕</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #fde2e4, #fae1dd, #e0f2fe);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 { font-size: 2.2rem; margin-bottom: 12px; }
+p { font-size: 1rem; line-height: 1.6; }
+.hidden { display: none; }
+
+.open-box {
+  margin: 20px auto;
+  padding: 16px;
+  background: #fb7185;
+  color: white;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.flip-card {
+  perspective: 1000px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-inner { transform: rotateY(180deg); }
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.flip-front img,
+.flip-front video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-back {
+  background: #fce7f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transform: rotateY(180deg);
+  font-size: 0.85rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.yes { background: #fb7185; color: white; }
+.no { background: #e5e7eb; }
+
+/* Responsive */
+@media (min-width: 768px) {
+  .card { max-width: 720px; padding: 32px 40px; }
+  h1 { font-size: 2.6rem; }
+}
+
+@media (max-width: 420px) {
+  .photo-wall { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  from { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h1>Rahulllll 💕</h1>
+  <p>Hi love &lt;3<br>I have something to ask you :) </p>
+
+  <div class="open-box" onclick="openSurprise()">🎁 Open Me</div>
+
+  <div id="content" class="hidden">
+    <div class="photo-wall">
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><video src="1.mp4" autoplay loop muted></video></div><div class="flip-back">Us, always 🫶<br>High on Happiness</div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="2.jpg"></div><div class="flip-back">My favourite hooman 💕</div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><video src="3.mp4" autoplay loop muted></video></div><div class="flip-back">Still obsessed 😌</div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="4.jpg"></div><div class="flip-back">"Mere liye kisi ne nahi kia yeh pehle"</div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><video src="6.mp4" autoplay loop muted></video></div><div class="flip-back">Cute and Chaotic 💖</div></div></div>
+      <div class="flip-card"><div class="flip-inner"><div class="flip-front"><img src="5.jpg"></div><div class="flip-back">To our first trip together 🥂</div></div></div>
+
+    </div>
+
+    <p>I know you're completely drowned in love with me. But I'd still like to ask!! <br>Will you be my Valentine? 💘</p>
+
+    <div class="buttons">
+      <button class="yes" id="yesBtn" onclick="sayYes()">Yes 💖</button>
+      <button class="no" id="noBtn" onclick="teaseNo()">No 🙃</button>
+    </div>
+
+    <div id="celebration" class="hidden">
+      <div class="confetti" id="confetti"></div>
+      <p><br>Yeh hui na baat 😌<br>Kha jau mai tumko, kha jau mai kha jau? 😚💕</p>
+      <img src="the office.gif" style="width:100%; border-radius:16px; margin-top:14px;">
+    </div>
+  </div>
+</div>
+
+<audio id="music" src="song.mp3"></audio>
+
+<script>
+let noCount = 0;
+const noTexts = [
+  "Really? 😒",
+  "Are you sure? 🤨",
+  "Kya itna bura hoon main maa? 🥺",
+  "Paap lagega ek aur baar mana kiya toh 😌",
+  "LAST CHANCE!!!"
+];
+
+function openSurprise() {
+  document.getElementById('content').classList.remove('hidden');
+  document.getElementById('music').play().catch(()=>{});
+}
+
+function teaseNo() {
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+
+  if (noCount < noTexts.length) {
+    noBtn.innerText = noTexts[noCount];
+  }
+
+  yesBtn.style.transform = `scale(${1 + noCount * 0.18})`;
+  noCount++;
+}
+
+function sayYes() {
+  document.getElementById('celebration').classList.remove('hidden');
+  launchConfetti();
+
+// Auto scroll to the GIF smoothly
+setTimeout(() => {
+celebration.scrollIntoView({
+behavior: 'smooth',
+block: 'center'
+});
+}, 300);
+}
+
+
+function launchConfetti() {
+const container = document.getElementById('confetti');
+for (let i = 0; i < 80; i++) {
+const c = document.createElement('div');
+c.className = 'confetti-piece';
+c.style.left = Math.random() * 100 + '%';
+c.style.background = ['#fb7185','#f472b6','#fde68a','#93c5fd'][Math.floor(Math.random()*4)];
+c.style.animationDelay = Math.random() * 0.5 + 's';
+container.appendChild(c);
+}
+}
+</script>
+</body>
+</html>
