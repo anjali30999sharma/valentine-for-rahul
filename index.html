@@ -91,8 +91,8 @@ p { font-size: 1rem; line-height: 1.6; }
   }
 }
 
-/* 📱 MOBILE: tap */
-.flip-card.flipped .flip-inner {
+/* Mobile tap flip support */
+.flip-card.active .flip-inner {
   transform: rotateY(180deg);
 }
 
@@ -198,12 +198,12 @@ button {
 
   <div id="content" class="hidden">
     <div class="photo-wall">
-      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><video src="1.mp4" autoplay loop muted playsinline webkit-playsinline></video></div><div class="flip-back">Us, always 🫶<br>High on Happiness</div></div></div>
-      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="2.jpg"></div><div class="flip-back">My favourite hooman 💕</div></div></div>
-      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><video src="3.mp4" autoplay loop muted playsinline webkit-playsinline></video></div><div class="flip-back">Still obsessed 😌</div></div></div>
-      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="4.jpg"></div><div class="flip-back">"Mere liye kisi ne nahi kia yeh pehle"</div></div></div>
-      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><video src="6.mp4" autoplay loop muted playsinline webkit-playsinline></video></div><div class="flip-back">Cute and Chaotic 💖</div></div></div>
-      <div class="flip-card" onclick="this.classList.toggle('flipped')"><div class="flip-inner"><div class="flip-front"><img src="5.jpg"></div><div class="flip-back">To our first trip together 🥂</div></div></div>
+      <div class="flip-card" onclick="handleFlip(this)"><div class="flip-inner"><div class="flip-front"><video src="1.mp4" autoplay loop muted playsinline webkit-playsinline></video></div><div class="flip-back">Us, always 🫶<br>High on Happiness</div></div></div>
+      <div class="flip-card" onclick="handleFlip(this)"><div class="flip-inner"><div class="flip-front"><img src="2.jpg"></div><div class="flip-back">My favourite hooman 💕</div></div></div>
+      <div class="flip-card" onclick="handleFlip(this)"><div class="flip-inner"><div class="flip-front"><video src="3.mp4" autoplay loop muted playsinline webkit-playsinline></video></div><div class="flip-back">Still obsessed 😌</div></div></div>
+      <div class="flip-card" onclick="handleFlip(this)"><div class="flip-inner"><div class="flip-front"><img src="4.jpg"></div><div class="flip-back">"Mere liye kisi ne nahi kia yeh pehle"</div></div></div>
+      <div class="flip-card" onclick="handleFlip(this)"><div class="flip-inner"><div class="flip-front"><video src="6.mp4" autoplay loop muted playsinline webkit-playsinline></video></div><div class="flip-back">Cute and Chaotic 💖</div></div></div>
+      <div class="flip-card" onclick="handleFlip(this)"><div class="flip-inner"><div class="flip-front"><img src="5.jpg"></div><div class="flip-back">To our first trip together 🥂</div></div></div>
 
     </div>
 
@@ -283,6 +283,13 @@ c.style.background = ['#fb7185','#f472b6','#fde68a','#93c5fd'][Math.floor(Math.r
 c.style.animationDelay = Math.random() * 0.5 + 's';
 container.appendChild(c);
 }
+}
+// Mobile flip behavior: tap one card closes others
+function handleFlip(card) {
+document.querySelectorAll('.flip-card').forEach(c => {
+if (c !== card) c.classList.remove('active');
+});
+card.classList.toggle('active');
 }
 </script>
 </body>
