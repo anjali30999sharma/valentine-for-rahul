@@ -236,8 +236,16 @@ const noTexts = [
 
 function openSurprise() {
   document.getElementById('content').classList.remove('hidden');
-  document.getElementById('music').play().catch(()=>{});
+
+  const music = document.getElementById('music');
+  music.play().catch(()=>{});
+
+  // 🔓 Unlock ALL videos after first user interaction
+  document.querySelectorAll('video').forEach(video => {
+    video.play().catch(()=>{});
+  });
 }
+
 
 function teaseNo() {
   const yesBtn = document.getElementById('yesBtn');
